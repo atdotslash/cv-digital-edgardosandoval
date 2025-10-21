@@ -1,0 +1,184 @@
+/* Variables de color para un diseño limpio */
+:root {
+    --primary-color: #0077b6; /* Azul corporativo */
+    --secondary-color: #48cae4; /* Azul claro */
+    --text-color: #333;
+    --background-color: #f8f9fa;
+    --border-color: #dee2e6;
+}
+
+/* Base y tipografía */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal para centrar el contenido */
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* Estilo del Encabezado */
+.header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+.header h2 {
+    margin: 5px 0 15px;
+    font-size: 1.2em;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+.header a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.header a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo de las Secciones */
+.section {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.section h3 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-top: 0;
+    font-size: 1.5em;
+}
+
+/* Perfil y Resumen */
+.summary {
+    font-size: 1.05em;
+    line-height: 1.7;
+}
+
+/* Experiencia Laboral */
+.job-entry {
+    margin-bottom: 20px;
+    padding-left: 15px;
+    border-left: 3px solid var(--secondary-color);
+}
+
+.job-entry h4 {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 1.1em;
+}
+
+.job-entry .meta {
+    font-style: italic;
+    color: #666;
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+.job-entry ul {
+    padding-left: 20px;
+    margin-top: 5px;
+}
+
+/* Historial Completo (para diferenciar la sección de detalle) */
+.full-history-section {
+    border-top: 3px solid var(--primary-color);
+    padding-top: 25px;
+    margin-top: 30px;
+}
+
+.full-history-section .note {
+    font-style: italic;
+    color: #999;
+}
+
+.full-history-link {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.full-history-link a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.full-history-link a:hover {
+    background-color: #00b4d8;
+}
+
+/* Habilidades en Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.skills-grid h4 {
+    color: var(--primary-color);
+    font-size: 1em;
+    margin-top: 0;
+}
+
+.skills-grid ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.skills-grid li {
+    margin-bottom: 8px;
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 4px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #ddd;
+    color: #555;
+    font-size: 0.8em;
+    margin-top: 20px;
+}
+
+/* Media Queries para responsividad (teléfonos) */
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: 1fr; /* Columna única en móviles */
+    }
+    .header h1 {
+        font-size: 2em;
+    }
+    .header h2 {
+        font-size: 1em;
+    }
+}
