@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOBITORK | Dashboard v2.0</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        tech: {
+                            blue: '#005D91',    /* Azul exacto del logo modificado */
+                            orange: '#F58220',  /* Naranja exacto del logo modificado */
+                            dark: '#030811'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #030811; /* tech.dark */
+            color: #d1d5db;
+            font-family: 'Inter', sans-serif;
+            /* Fondo con patrón técnico sutil */
+            background-image: 
+                radial-gradient(circle at 1.5px 1.5px, rgba(255,255,255,0.03) 1px, transparent 0);
+            background-size: 30px 30px;
+        }
+
+        .font-tech { font-family: 'Orbitron', sans-serif; }
+
+        /* Componente Glassmorphism Mejorado */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+        }
+
+        .border-tech-gradient {
+            border-width: 1.5px;
+            border-image: linear-gradient(to bottom right, rgba(0,93,145,0.8), rgba(245,130,32,0.8)) 1;
+        }
+
+        /* Gantt Chart Mejoras */
+        .gantt-line {
+            position: relative;
+            background: rgba(255,255,255,0.02);
+            border-radius: 99px;
+            overflow: hidden;
+        }
+        
+        .gantt-bar {
+            height: 100%;
+            position: absolute;
+            border-radius: 99px;
+            transition: all 0.3s ease;
+        }
+
+        .month-marker {
+            position: absolute;
+            height: 100%;
+            width: 1px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .label-large {
+            font-size: 1.15rem; /* ~18px para mejor lectura */
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <header class="max-w-7xl mx-auto mb-10">
+        <div class="glass-card p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="w-full md:w-1/3 flex justify-center md:justify-start">
+                <img src="LOGO.PNG" alt="MOBITORK Logo" class="h-32 object-contain filter drop-shadow-lg">
+            </div>
+            
+            <div class="text-center md:text-right">
+                <h1 class="font-tech text-3xl md:text-5xl text-orange-500 font-bold mb-2 orange-glow">MOBITORK</h1>
+                <p class="text-blue-400 font-semibold tracking-widest uppercase text-sm">Instalaciones y Aplicaciones de la Energía</p>
+                <div class="mt-4 text-slate-400 text-sm">
+                    <p><span class="text-slate-200">Profesor:</span> Edgardo Sandoval</p>
+                    <p><span class="text-slate-200">Curso:</span> 6to 5ta - Grupo B</p>
+                    <p><span class="text-slate-200">Institución:</span> E.E.S.T. N° 1 "Guillermo Brown", Zárate</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto space-y-12">
+
+        <section class="glass-card p-2 border-tech-gradient">
+            <div class="bg-slate-900/50 rounded-lg p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="space-y-3">
+                    <h2 class="font-tech text-3xl text-tech-orange uppercase font-bold tracking-tight">Impulsa la Movilidad Solidaria</h2>
+                    <p class="text-slate-300 max-w-2xl text-base leading-relaxed">
+                        Nuestro proyecto técnico busca tu apoyo. Necesitamos patrocinadores y donaciones de materiales clave: Baterías 12V 55A, motores CC, perfiles de acero y componentes electrónicos. Tu ayuda se transforma en independencia para un centro de salud.
+                    </p>
+                </div>
+                <a href="https://instagram.com/prepromo_6to5ta" target="_blank" rel="noopener noreferrer"
+                   class="bg-tech-orange hover:bg-tech-orange/80 text-white font-bold py-5 px-10 rounded-xl transition-all hover:scale-105 flex items-center gap-3 shadow-[0_5px_20px_-5px_rgba(245,130,32,0.6)]">
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    <span class="text-lg">CONTACTAR</span>
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <h3 class="font-tech text-2xl text-tech-blue mb-8 flex items-center gap-3">
+                <span class="w-12 h-0.5 bg-tech-blue"></span> DISTRIBUCIÓN DE EQUIPOS
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="glass-card p-6 border-b-2 border-b-tech-blue">
+                    <h4 class="text-slate-100 font-bold mb-5 border-b border-tech-blue pb-2">Mecanizado y Chasis</h4>
+                    <ul class="space-y-2.5 text-slate-300">
+                        <li class="flex items-center gap-2.5"> <div class="w-2 h-2 bg-tech-blue rounded-full"></div> MALLO, Iara</li>
+                        <li class="flex items-center gap-2.5"> <div class="w-2 h-2 bg-tech-blue rounded-full"></div> MENDEZ, Tomas</li>
+                        <li class="flex items-center gap-2.5"> <div class="w-2 h-2 bg-tech-blue rounded-full"></div> MENDOZA, Jeremias</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-6 border-b-2 border-b-tech-blue">
+                    <h4 class="text-slate-100 font-bold mb-5 border-b border-tech-blue pb-2">Sist. Eléctrico y Control</h4>
+                    <ul class="space-y-2.5 text-slate-300">
+                        <li class="flex items-center gap-2.5"> <div class="w-2 h-2 bg-tech-blue rounded-full"></div> LEZCANO, Alexander</li>
+                        <li class="flex items-center gap-2.5"> <div class="w-2 h-2 bg-tech-blue rounded-full"></div> PEREYRA, Isaias</li>
+                        <li class="flex items-center gap-2.5"> <div class="w-2 h-2 bg-tech-blue rounded-full"></div> LAVALLENA, Tatiana</li>
+                        <li class="flex items-center gap-2.5"> <div class="w-2 h-2 bg-tech-blue rounded-full"></div> RICALDE, Thiago</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-6 border-b-2 border-b-tech-blue">
+                    <h4 class="text-slate-100 font-bold mb-5 border-b border-tech-blue pb-2">Diseño y Calidad</h4>
+                    <ul class="space-y-2.5 text-slate-300">
+                        <li class="flex items-center gap-2.5"> <div class="w-2 h-2 bg-tech-blue rounded-full"></div> ROMANO M., Bautista</li>
+                        <li class="flex items-center gap-2.5"> <div class="w-2 h-2 bg-tech-blue rounded-full"></div> SANCHEZ, Irina</li>
+                        <li class="flex items-center gap-2.5"> <div class="w-2 h-2 bg-tech-blue rounded-full"></div> TABORDA, Enzo</li>
+                        <li class="flex items-center gap-2.5"> <div class="w-2 h-2 bg-tech-blue rounded-full"></div> TOLEDO, Dylan</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-6 border-b-2 border-b-tech-blue">
+                    <h4 class="text-slate-100 font-bold mb-5 border-b border-tech-blue pb-2">Comunicación y Log.</h4>
+                    <ul class="space-y-2.5 text-slate-300">
+                        <li class="flex items-center gap-2.5"> <div class="w-2 h-2 bg-tech-blue rounded-full"></div> TORRES, Aron</li>
+                        <li class="flex items-center gap-2.5"> <div class="w-2 h-2 bg-tech-blue rounded-full"></div> VELAZQUEZ, Lautaro</li>
+                        <li class="flex items-center gap-2.5"> <div class="w-2 h-2 bg-tech-blue rounded-full"></div> VELAZQUEZ, Valentin</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <h3 class="font-tech text-2xl text-slate-200 mb-8 flex items-center gap-3">
+                <span class="w-12 h-0.5 bg-slate-200"></span> CRONOGRAMA DE OBRA (JUEVES 17:30 - 21:30)
+            </h3>
+            <div class="glass-card p-8 min-w-[700px]">
+                
+                <div class="relative grid grid-cols-12 gap-1 mb-6 text-sm font-tech text-slate-400 text-center font-bold">
+                    <div class="col-span-3 text-right pr-6 uppercase text-tech-orange tracking-widest">Etapa</div>
+                    <div class="col-span-3 flex justify-center label-large">Abril <span class="text-xs self-center ml-1 text-slate-600">(Mitas 2)</span></div>
+                    <div class="col-span-3 flex justify-center label-large">Mayo</div>
+                    <div class="col-span-3 flex justify-center label-large">Junio</div>
+                </div>
+
+                <div class="relative pl-[25%] space-y-6">
+                    <div class="month-marker" style="left: 0%;"></div>
+                    <div class="month-marker" style="left: 25%;"></div>
+                    <div class="month-marker" style="left: 50%;"></div>
+                    <div class="month-marker" style="left: 75%;"></div>
+                    <div class="month-marker" style="left: 100%;"></div>
+                    
+                    <div class="grid grid-cols-1 gap-4 items-center relative">
+                        <div class="absolute left-[-33.33%] text-slate-100 label-large">1. Diseño y Cálculo</div>
+                        <div class="gantt-line h-10 w-full">
+                            <div class="gantt-bar bg-tech-blue shadow-[0_0_15px_rgba(0,93,145,0.6)]" style="left: 0%; width: 50%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 gap-4 items-center relative">
+                        <div class="absolute left-[-33.33%] text-slate-100 label-large">2. Adquisición Materiales</div>
+                        <div class="gantt-line h-10 w-full">
+                            <div class="gantt-bar bg-tech-orange shadow-[0_0_15px_rgba(245,130,32,0.6)]" style="left: 25%; width: 33.33%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 gap-4 items-center relative">
+                        <div class="absolute left-[-33.33%] text-slate-100 label-large">3. Manufactura Chasis</div>
+                        <div class="gantt-line h-10 w-full">
+                            <div class="gantt-bar bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.5)]" style="left: 41.66%; width: 66.66%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 gap-4 items-center relative">
+                        <div class="absolute left-[-33.33%] text-slate-100 label-large">4. Ensamble y Test</div>
+                        <div class="gantt-line h-10 w-full">
+                            <div class="gantt-bar bg-purple-500 shadow-[0_0_15px_rgba(168,85,247,0.5)]" style="left: 75%; width: 25%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10 flex justify-between text-base text-slate-500 border-t border-slate-800 pt-4 font-mono">
+                    <span>INICIO PROYECTO: 16/04/2026</span>
+                    <span>ENTREGA FINAL: 16/07/2026</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 pb-20">
+            
+                <div class="glass-card p-10 border-l-4 border-l-tech-orange">
+                    <h3 class="font-tech text-3xl text-tech-orange mb-6 uppercase font-bold tracking-tight">Objetivos Técnicos</h3>
+                    <div class="text-slate-200 leading-relaxed text-lg space-y-5">
+                        <p>
+                            Transformación de una silla de ruedas convencional robusta (rodado 26 posterior) en una unidad <strong>autopropulsada</strong> mediante motores de corriente continua.
+                        </p>
+                        <ul class="space-y-4 text-slate-300">
+                            <li class="flex items-start gap-3">
+                                <span class="text-tech-orange mt-1">●</span>
+                                Integración de sistema de alimentación: Batería 12V 55A.
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-tech-orange mt-1">●</span>
+                                Control de mando: Joystick manual ergonómico (lado derecho).
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-tech-orange mt-1">●</span>
+                                Cálculo de torque y transmisión para transporte de carga pesada.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="glass-card p-10 border-l-4 border-l-tech-blue">
+                    <h3 class="font-tech text-3xl text-tech-blue mb-6 uppercase font-bold tracking-tight">Enfoque Social</h3>
+                    <div class="text-slate-200 leading-relaxed text-lg space-y-6">
+                        <p class="italic font-light">
+                            "La tecnología solo tiene sentido si resuelve problemas humanos."
+                        </p>
+                        <p class="text-slate-300">
+                            El producto final funcional será sorteado entre instituciones médicas públicas (hospitales y centros de atención) de la zona de <strong>Lima, Zárate, Campana, Escobar y Exaltación de la Cruz</strong>. Este proyecto busca democratizar el acceso a sillas motorizadas, cuyo costo de mercado es prohibitivo para muchos centros de salud regionales.
+                        </p>
+                    </div>
+                </div>
+            
+        </section>
+
+    </main>
+
+    <footer class="text-center py-12 text-slate-600 text-sm border-t border-slate-900 mt-16 font-mono">
+        <p>MOBITORK Project | E.E.S.T. N° 1 Zárate &copy; 2026</p>
+        <p class="mt-2 text-slate-700">Diseñado con estética Industrial-Tech v2.0</p>
+    </footer>
+
+</body>
+</html>
